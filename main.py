@@ -19,6 +19,18 @@ import pytz
 import requests
 import yaml
 
+# 尝试加载 .env 文件（如果存在）
+try:
+    from dotenv import load_dotenv
+    # 自动查找项目根目录的 .env 文件
+    env_path = Path(__file__).parent / ".env"
+    if env_path.exists():
+        load_dotenv(env_path)
+        print(f"✅ 已加载环境变量文件: {env_path}")
+except ImportError:
+    # python-dotenv 未安装，跳过
+    pass
+
 
 VERSION = "3.0.5"
 
